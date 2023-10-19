@@ -1,0 +1,1 @@
+#Represents the different types of coffee the machine can make
