@@ -9,4 +9,10 @@ def check_date():
         date.date_today()
         print(('TODAYS DATE ADDED TO TXT FILE','orchid')) #this will be added to the quit function section of the main 
 
+def main():
+    pass
+
+
+
 check_date()
+main()
