@@ -7,6 +7,6 @@ def check_date():
         pass
     else:
         date.date_today()
-        print('TODAYS DATE ADDED TO TXT FILE') #this will be added to the quit function section of the main 
+        print(('TODAYS DATE ADDED TO TXT FILE','orchid')) #this will be added to the quit function section of the main 
 
 check_date()

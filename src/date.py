@@ -13,5 +13,6 @@ def date_today():
     with open('date_last_accessed.txt', 'w') as f:
         current_date = str(datetime.now().date())
         f.write(f'{current_date}')
+    return current_date
 
 accessed_date()
