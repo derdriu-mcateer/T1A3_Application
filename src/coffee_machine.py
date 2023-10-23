@@ -6,18 +6,36 @@ class CoffeeMachine:
     
     def supplies_report(self):
         # print a report of the machine's supplies and each level
-        print(f'{self.supplies['water']}')
-        print(f'{self.supplies['coffee']}')
-        print(f'{self.supplies['milk']}')
+        print(f'Water: {self.supplies['water']}ml / 1000ml')
+        print(f'Coffee Beans: {self.supplies['coffee']}g / 500g')
+        print(f'Milk: {self.supplies['milk']}ml / 800ml')
 
     def cleaning_cycle(self):
         # reduce the machine's water supply by 50ml
         self.supplies['water'] -= 50
         print('The cleaning cycle is now complete. The machine is ready for use')
-        return
 
     def refill_machine(self):
-        pass
+        refill_selection = input('Which supply would you like to refill [1]Water [2]Coffee Beans [3]Milk [4]All: ')
+        match refill_selection:
+            case '1':
+                self.supplies['water'] = 1000
+                print(f'Water: {self.supplies['water']}ml / 1000ml')
+            case '2':
+                self.supplies['coffee'] = 500
+                print(f'Coffee Beans: {self.supplies['coffee']}g / 500g')
+            case '3':
+                self.supplies['milk'] = 800
+                print(f'Milk: {self.supplies['milk']}ml / 800ml')
+            case '4':
+                self.supplies['water'] = 1000
+                self.supplies['coffee'] = 500
+                self.supplies['milk'] = 800
+                print(f'Water: {self.supplies['water']}ml / 1000ml')
+                print(f'Coffee Beans: {self.supplies['coffee']}g / 500g')
+                print(f'Milk: {self.supplies['milk']}ml / 800ml')
+            case _:
+                print('Invalid selection - No supplies have been refilled')
 
     def make_coffee(self):
         pass

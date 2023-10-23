@@ -30,7 +30,7 @@ def main():
                 # run the supplies report function 
             case '2':
                 # run the refill machine function 
-                pass
+                coffee_machine.refill_machine()
             case '1':
                 # run the coffee selection function then the make coffee function 
                 pass
