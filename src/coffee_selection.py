@@ -1,3 +1,7 @@
+import colorama
+from colorama import Fore
+colorama.init(autoreset=True)
+
 class CoffeeSelection:
 
     def __init__(self):
@@ -10,15 +14,17 @@ class CoffeeSelection:
         }
     
     def user_menu(self):
-        print(' Please select which type of coffee you would like to make: ')
+        print('\n Please select which type of coffee you would like to make: ')
         for key, value in self.coffee_types.items():
-            print(f'{key}:{value['name']}')
+            print(f'\n{Fore.YELLOW + '[' + str(key) + ']' '\033[39m'}:{value['name']}')
 
     def user_selection(self):
-        selection = int(input(':'))
+        selection = int(input('\n:'))
         global choice
         if selection in self.coffee_types:
             choice = self.coffee_types[selection]
             return choice
         else:
-            print('Sorry that is not a valid option - please try again')
+            print(f'\n{Fore.RED}Sorry that is not a valid option - please try again')
+            self.user_menu()
+            self.user_selection()
