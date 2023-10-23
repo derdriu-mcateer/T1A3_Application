@@ -1,4 +1,6 @@
-# Represents the coffee machine
+import coffee_selection
+
+#Represents the coffee machine
 class CoffeeMachine:
     def __init__(self):
         # supplies held by the coffee machine 
@@ -38,4 +40,12 @@ class CoffeeMachine:
                 print('Invalid selection - No supplies have been refilled')
 
     def make_coffee(self):
-        pass
+        #function which takes the users selection from coffeeselection class and determins if there are enough supplies to make the selection
+        if (self.supplies['water'] >= coffee_selection.choice['water']) and (self.supplies['milk'] >= coffee_selection.choice['milk']) and (self.supplies['coffee'] >= coffee_selection.choice['coffee']):
+            self.supplies['water'] -= coffee_selection.choice['water']
+            self.supplies['coffee'] -= coffee_selection.choice['coffee']
+            self.supplies['milk'] -= coffee_selection.choice['milk']
+            print(f'here is your {coffee_selection.choice['name']}')
+            return
+        else:
+            print(f'Sorry there are not enough supplies in the machine to make a {coffee_selection.choice['name']}. Please refill the machine.')

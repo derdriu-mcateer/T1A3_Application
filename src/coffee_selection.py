@@ -14,8 +14,11 @@ class CoffeeSelection:
         for key, value in self.coffee_types.items():
             print(f'{key}:{value['name']}')
 
-
-coffee_user = CoffeeSelection()
-
-coffee_user.user_menu()
-
+    def user_selection(self):
+        selection = int(input(':'))
+        global choice
+        if selection in self.coffee_types:
+            choice = self.coffee_types[selection]
+            return choice
+        else:
+            print('Sorry that is not a valid option - please try again')

@@ -1,6 +1,8 @@
 from datetime import datetime
 import date
+from coffee_selection import CoffeeSelection
 from coffee_machine import CoffeeMachine
+
 
 # The user interface 
 def check_date():
@@ -33,7 +35,9 @@ def main():
                 coffee_machine.refill_machine()
             case '1':
                 # run the coffee selection function then the make coffee function 
-                pass
+                CoffeeSelection().user_menu()
+                CoffeeSelection().user_selection()
+                coffee_machine.make_coffee()
             case _:
                 print('Sorry that option is not valid - please select a valid option')
 
