@@ -1,5 +1,5 @@
 import time
-from clear_screen import clear
+import os
 import colorama
 from colorama import Fore
 colorama.init(autoreset=True)
@@ -23,3 +23,6 @@ def user_menu():
     print(f'\n{(Fore.YELLOW + '[3]' + '\033[39m')} View Supply Levels ') 
     print(f'\n{(Fore.YELLOW + '[4]' + '\033[39m')} Clean the Machine ')
     print(f'\n{(Fore.YELLOW + '[5]' + '\033[39m')} Turn Off')
+
+def clear():
+    os.system('cls' if os.name == 'nt' else 'clear')
