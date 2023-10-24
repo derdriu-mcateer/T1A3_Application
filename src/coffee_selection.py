@@ -16,7 +16,7 @@ class CoffeeSelection:
     def user_menu(self):
         print('\n Please select which type of coffee you would like to make: ')
         for key, value in self.coffee_types.items():
-            print(f'\n{Fore.YELLOW + '[' + str(key) + ']' '\033[39m'}:{value['name']}')
+            print(f'''\n{Fore.YELLOW + '[' + str(key) + ']' '\033[39m'} {value['name']}''')
 
     def user_selection(self):
         selection = int(input('\n:'))

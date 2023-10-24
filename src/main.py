@@ -14,7 +14,7 @@ def main():
     while machine_is_on == True:
         check_date()
         user_interface.user_menu()
-        user_action = input(':')
+        user_action = input('\n:')
         match user_action:
             case '5':
                 # turn machine off
