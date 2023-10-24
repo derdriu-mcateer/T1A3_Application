@@ -1,19 +1,22 @@
+import time
+from clear_screen import clear
 import colorama
 from colorama import Fore
 colorama.init(autoreset=True)
 
-
 def welcome_greeting():
     print(f'\n {Fore.CYAN}Hello there!')
-    pass
-
+    
 
 def goodbye_message():
+    print(f'\n {Fore.RED}TURNING OFF')
+    time.sleep(1)
     print(f'\n {Fore.CYAN}Goodbye - have a lovely day!')
-    pass
-
+    time.sleep(1)
+    
 
 def user_menu():
+    time.sleep(1)
     print('\n Please select an option:')
     print(f'\n{(Fore.YELLOW + '[1]' + '\033[39m')} Make A Coffee')
     print(f'\n{(Fore.YELLOW + '[2]' + '\033[39m')} Refill the Machine ') 

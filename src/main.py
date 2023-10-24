@@ -1,10 +1,11 @@
+import time
+import colorama
+from colorama import Fore
 from date import date_today, check_date
 from coffee_selection import CoffeeSelection
 from coffee_machine import CoffeeMachine
 import user_interface
-import colorama
-from colorama import Fore
-colorama.init(autoreset=True)
+
 
 
 def main():

@@ -2,6 +2,7 @@ import colorama
 from colorama import Fore
 colorama.init(autoreset=True)
 import coffee_selection
+import time
 
 #Represents the coffee machine
 class CoffeeMachine:
@@ -39,6 +40,8 @@ class CoffeeMachine:
     def cleaning_cycle(self):
         # reduce the machine's water supply by 50ml
         if self.water > 50:
+            print(f'\n {Fore.YELLOW}Initiating cleaning cycle - please standby')
+            time.sleep(3)
             self.water -= 50
             print(f'\n {Fore.GREEN}The cleaning cycle is now complete. The machine is ready for use')
         else:
@@ -84,6 +87,8 @@ class CoffeeMachine:
             self.water -= coffee_selection.choice['water']
             self.coffee_beans -= coffee_selection.choice['coffee']
             self.milk -= coffee_selection.choice['milk']
+            print(f'\n Your coffee is being made now - please wait ')
+            time.sleep(2)
             print(f'\n Here is your {Fore.GREEN} {coffee_selection.choice['name']}')
             print(f'\n {Fore.MAGENTA}Enjoy!')
             return
