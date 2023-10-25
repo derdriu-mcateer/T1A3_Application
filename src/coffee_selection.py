@@ -22,14 +22,16 @@ class CoffeeSelection:
             )
 
     def user_selection(self):
-        selection = int(input("\n:"))
+
         global choice
-        if selection in self.coffee_types:
+        try:
+            selection = int(input("\n:"))
             choice = self.coffee_types[selection]
             return choice
-        else:
+        except:
             print(
-                f"\n{Fore.RED}Sorry that is not a valid option - please try again"
+                f"\n{Fore.RED}Sorry that is not a valid option - please select a number from the list"
             )
             self.user_menu()
             self.user_selection()
+
