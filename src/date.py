@@ -5,10 +5,13 @@ from coffee_machine import CoffeeMachine
 
 # Will read the date from the txt file (date the app was last accessed)
 def accessed_date():
-    global past_date
-    with open("date_last_accessed.txt") as f:
-        past_date = f.read()
-    return past_date
+    try:
+        global past_date
+        with open("date_last_accessed.txt") as f:
+            past_date = f.read()
+        return past_date
+    except FileNotFoundError as error:
+        print(f"An error has occurred: {str(error)}")
 
 
 accessed_date()
@@ -23,7 +26,10 @@ def date_today():
 
 
 def check_date():
-    if past_date == str(datetime.now().date()):
-        pass
-    else:
-        CoffeeMachine().cleaning_cycle()  # will run a clean cycle
+    try:
+        if past_date == str(datetime.now().date()):
+            CoffeeMachine().cleaning_cycle()  # will run a clean cycle
+    except (
+        NameError
+    ):  # if past_date is not defined then use current date as the past date
+        past_date = str(datetime.now().date())
