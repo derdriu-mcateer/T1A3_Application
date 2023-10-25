@@ -6,14 +6,12 @@ from coffee_selection import CoffeeSelection
 from coffee_machine import CoffeeMachine
 import user_interface
 
-
+user_interface.clear()
 def main():
-    user_interface.clear()
     coffee_machine = CoffeeMachine()
     machine_is_on = True
     user_interface.welcome_greeting()
     while machine_is_on == True:
-        time.sleep(1)
         check_date()
         user_interface.clear()
         user_interface.user_menu()
