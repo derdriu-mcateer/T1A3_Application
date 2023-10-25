@@ -15,8 +15,8 @@ def main():
     user_interface.welcome_greeting()
     while machine_is_on == True:
         time.sleep(1)
-        user_interface.clear()
         check_date()
+        user_interface.clear()
         user_interface.user_menu()
         user_action = input('\n:')
         match user_action:
