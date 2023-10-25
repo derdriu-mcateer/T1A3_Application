@@ -1,6 +1,0 @@
-.venv
-.DS_Store
-__pycahce__
-.pytest_cache
-src/__pycahce__
-src/__pytest_cache

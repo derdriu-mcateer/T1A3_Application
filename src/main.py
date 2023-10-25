@@ -1,5 +1,3 @@
-import time
-import colorama
 from colorama import Fore
 from date import date_today, check_date
 from coffee_selection import CoffeeSelection
@@ -45,10 +43,10 @@ def main():
                     coffee_machine.make_coffee()
                 case _:
                     print(
-                        f"\n{Fore.RED}Sorry that option is not valid - please select a valid option"
+                        f"\n{Fore.RED}Sorry [{user_action}] is not a valid option - please select a valid option"
                     )
         except Exception as error:
             print(f'An error has occurred: {str(error)}')
 
-
-main()
+if __name__ == '__main__':
+    main()
