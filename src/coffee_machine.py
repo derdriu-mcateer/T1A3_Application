@@ -1,4 +1,5 @@
 import time
+import user_interface
 import coffee_selection
 import colorama
 from colorama import Fore
@@ -15,6 +16,7 @@ class CoffeeMachine:
         self.milk = 300
 
     def supplies_report(self):
+        user_interface.clear()
         # print a report of the machine's supplies and each level
         print(f'\n The machine\'s supply levels are: ')
         if self.water < 100:
@@ -46,6 +48,7 @@ class CoffeeMachine:
         else:
             print(
                 f'\n {(Fore.GREEN + 'Milk: ' + '\033[39m')} {self.milk}ml / 300ml')
+        time.sleep(2)
 
     def cleaning_cycle(self):
         # reduce the machine's water supply by 50ml
@@ -54,12 +57,12 @@ class CoffeeMachine:
             time.sleep(3)
             self.water -= 50
             print(f'\n {Fore.GREEN}The cleaning cycle is now complete. The machine is ready for use')
+            time.sleep(2)
         else:
             print(f'\n {Fore.RED}Unable to complete the cleaning cycle. \n There is an insufficient amount of water available. Please refill the machine')
+            time.sleep(2)
 
     def refill_machine(self):
-        refilling = True
-        while refilling == True:
             print('\n Which supply would you like to refill:')
             print(f'\n{(Fore.YELLOW + '[1]' + '\033[39m')} Water')
             print(f'\n{(Fore.YELLOW + '[2]' + '\033[39m')} Coffee Beans ')
@@ -83,12 +86,14 @@ class CoffeeMachine:
                     self.coffee_beans = 250
                     self.milk = 400
                     self.supplies_report()
-                    refilling = False
                 case '5':
-                    print(f'\n {Fore.CYAN}No supplies have been refilled')
-                    refilling = False
+                    print(f'\n {Fore.CYAN} No supplies have been refilled')
+                    time.sleep(2)
                 case _:
-                    print(f'\n {Fore.RED}Invalid selection')
+                    user_interface.clear()
+                    print(
+                    f"\n{Fore.RED}Sorry [{refill_selection}] is not a valid option - please select a valid option"
+                    )
                     self.refill_machine()
 
     def make_coffee(self):
@@ -97,12 +102,17 @@ class CoffeeMachine:
             self.water -= coffee_selection.choice['water']
             self.coffee_beans -= coffee_selection.choice['coffee']
             self.milk -= coffee_selection.choice['milk']
+            user_interface.clear()
             print(f'\n Your coffee is being made now - please wait ')
             time.sleep(2)
-            print(f'''\n Here is your {Fore.GREEN} {
+            user_interface.clear()
+            print(f'''\n Here is your{Fore.YELLOW} {
                   coffee_selection.choice['name']}''')
-            print(f'\n {Fore.MAGENTA}Enjoy!')
-            return
+            print(f'\n {Fore.MAGENTA} Enjoy!')
+            time.sleep(2)
+            user_interface.clear()
         else:
+            user_interface.clear()
             print(f'''\n{Fore.RED}Sorry there are not enough supplies in the machine to make a {
                   coffee_selection.choice['name']}. Please refill the machine.''')
+            time.sleep(3)

@@ -1,7 +1,7 @@
 import colorama
 from colorama import Fore
-
 colorama.init(autoreset=True)
+import user_interface
 
 
 class CoffeeSelection:
@@ -22,12 +22,14 @@ class CoffeeSelection:
             )
 
     def user_selection(self):
+
         global choice
         try:
             selection = int(input("\n:"))
             choice = self.coffee_types[selection]
             return choice
         except:
+            user_interface.clear()
             print(
                 f"\n{Fore.RED}Sorry that is not a valid option - please select a number from the list"
             )

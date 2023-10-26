@@ -7,17 +7,20 @@ colorama.init(autoreset=True)
 
 
 def welcome_greeting():
+    clear()
+    with open("welcome_banner.txt", "r") as file:
+        welcome = file.read()
+    print(welcome)
     print(f"\n {Fore.CYAN}Hello there!")
-    with open('banner_card.txt', 'r') as file:
-        banner_card = file.read()
-    print(banner_card)
     time.sleep(1)
 
 
 def goodbye_message():
-    print(f"\n {Fore.RED}TURNING OFF")
+    with open("quit_banner.txt", "r") as file:
+        goodbye = file.read()
+    print(goodbye)
     time.sleep(1)
-    print(f"\n {Fore.CYAN}Goodbye - have a lovely day!")
+    print(f"\n {Fore.RED}TURNING OFF")
     time.sleep(1)
 
 

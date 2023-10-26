@@ -4,16 +4,15 @@ from coffee_selection import CoffeeSelection
 from coffee_machine import CoffeeMachine
 import user_interface
 
-user_interface.clear()
-user_interface.welcome_greeting()
 
 def main():
+    user_interface.welcome_greeting()
     coffee_machine = CoffeeMachine()
     check_date()
     while True:
-        user_interface.user_menu()
-        user_action = input("\n:")
         user_interface.clear()
+        user_interface.user_menu()
+        user_action = input("\n:") 
         match user_action:
             case "5":
                 user_interface.clear()
@@ -27,7 +26,6 @@ def main():
                 # run the clean cycle function
                 coffee_machine.cleaning_cycle()
             case "3":
-                user_interface.clear()
                 coffee_machine.supplies_report()
                 # run the supplies report function
             case "2":
@@ -45,5 +43,6 @@ def main():
                     f"\n{Fore.RED}Sorry [{user_action}] is not a valid option - please select a valid option"
                 )
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()
