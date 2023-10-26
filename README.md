@@ -5,7 +5,25 @@
 ## Help Documentation
 
 ### System / Hardware Requirements
+
+
 ### Software Requirements
+#### Python 3
+This application requires a Python version of 3 or higher. 
+
+You can check if you have python installed by entering python --version into your terminal. 
+
+Please visit [python.org](https://www.python.org/downloads/) if you do not have python installed or have a version of python older than Python 3. 
+
+#### Pip 3
+This application requires the lastest pip version available which is pip 3.
+
+Pip should be installed when follow the Installation instructions.
+
+However if you wish to download or upgrade pip onto your system now please visit [pip.pypa.io](https://pip.pypa.io/en/latest/getting-started/)
+
+
+
 ### Installation
 #### GIT Clone
 1. Follow the link to the corresponding repository for this terminal application. 
@@ -42,6 +60,11 @@
 ## Features 
 
 ## Styling
+The source code for this terminal application adhered to the PEP 8 style guidelines. 
+
+PEP 8 was chosen to enhance the clarity and consistency of the application's code.
+
+The PEP 8 style code for python code can be found [here](https://peps.python.org/pep-0008/)
 
 ## Testing
 
