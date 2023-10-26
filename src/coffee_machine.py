@@ -9,11 +9,11 @@ colorama.init(autoreset=True)
 
 
 class CoffeeMachine:
-    def __init__(self):
+    def __init__(self, water = 500, coffee_beans = 250, milk = 300):
         # supplies held by the coffee machine
-        self.water = 500
-        self.coffee_beans = 250
-        self.milk = 300
+        self.water = water
+        self.coffee_beans = coffee_beans
+        self.milk = milk
 
     def supplies_report(self):
         user_interface.clear()
