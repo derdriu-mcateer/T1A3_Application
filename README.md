@@ -27,27 +27,33 @@ However if you wish to download or upgrade pip onto your system now please visit
 
 ### Installation
 #### GIT Clone
-1. Follow the link to the corresponding repository for this terminal application. 
+1. Follow the [link](https://github.com/mini109/T1A3_Application/tree/main) to the repository for this terminal application. 
 2. Click the green < > Code button 
-3. Under HTTPS - copy the https:// link
+3. Under HTTPS - copy the https:// link \
+![Installation with https clone](./docs/installation%20screenshots/clone_install.png)
 4. In the terminal navigate into the folder where you would like the file to cloned into 
 5. Clone the github repository by pasting the copied link 
+```md 
+git clone https://github.com/mini109/T1A3_Application.git
+```
 6. Navigate into the cloned folder (T1A3_Application)
 7. Type BASH COMMAND to install the requirements and then BASH COMMAND to run the application
 
 #### ZIP File 
-1. Follow the link to the corresponding repository for this terminal application. 
+1. Follow the [link](https://github.com/mini109/T1A3_Application/tree/main) to the repository for this terminal application.  
 2. Click the green < > Code button
-3. Click Download ZIP 
+3. Click Download ZIP \
+![Installation with zip file](./docs/installation%20screenshots/zip_install.png)
 4. Extract the ZIP file and store the folder where you would like to house the application
 5. In the terminal, navigate to the extracted ZIP FILE
 6. Type BASH COMMAND to install the requirements and then BASH COMMAND to run the application
 
 #### Using Code Spaces
-1. Follow the link to the corresponding repository for this terminal application. 
+1. Follow the [link](https://github.com/mini109/T1A3_Application/tree/main) to the repository for this terminal application. 
 2. Click the green < > Code button
 3. Click the Codespaces tab 
-4. Click the Create codespace on main button 
+4. Click the Create codespace on main button \
+![Installation with Codespaces](./docs/installation%20screenshots/codespace_install.png)
 5. In the terminal within the codespace, Type BASH COMMAND to install the requirements and then BASH COMMAND to run the application
 
 
