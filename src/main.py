@@ -1,5 +1,5 @@
 from colorama import Fore
-from date import date_today, check_date
+from date import date_today, check_date, accessed_date
 from coffee_selection import CoffeeSelection
 from coffee_machine import CoffeeMachine
 import user_interface
@@ -11,7 +11,8 @@ def main():
     user_interface.welcome_greeting()
     coffee_machine = CoffeeMachine()
     user_interface.clear()
-    check_date()
+    past_date = accessed_date()
+    check_date(past_date)
     while True:
         user_interface.user_menu()
         user_action = input("\n:")
@@ -38,13 +39,11 @@ def main():
                 user_interface.clear()
                 # run the coffee selection function
                 CoffeeSelection().user_menu()
-                CoffeeSelection().user_selection()
+                choice = CoffeeSelection().user_selection()
                 # run the make coffee function
-                coffee_machine.make_coffee()
+                coffee_machine.make_coffee(choice)
             case _:
                 print(f"\n{Fore.RED}Sorry [{user_action}] is not a valid option")
                 time.sleep(1)
 
-
-if __name__ == "__main__":
-    main()
+main()

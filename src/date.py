@@ -6,7 +6,6 @@ from coffee_machine import CoffeeMachine
 # Will read the date from the txt file (date the app was last accessed)
 def accessed_date():
     try:
-        global past_date
         with open("date_last_accessed.txt") as f:
             past_date = f.read()
         return past_date
@@ -14,7 +13,6 @@ def accessed_date():
         print(f"An error has occurred: {str(error)}")
 
 
-accessed_date()
 
 
 # Will save current date into txt file once the app is quit
@@ -25,8 +23,10 @@ def date_today():
     return current_date
 
 
-def check_date():
+def check_date(past_date):
     if past_date != str(datetime.now().date()):
         CoffeeMachine().cleaning_cycle()  # will run a clean cycle
     else:
         pass
+
+

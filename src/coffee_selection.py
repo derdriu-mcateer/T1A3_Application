@@ -24,7 +24,6 @@ class CoffeeSelection:
             )
 
     def user_selection(self):
-        global choice
         try:
             selection = input("\n:")
             choice = self.coffee_types[selection]

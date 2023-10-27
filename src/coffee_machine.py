@@ -98,21 +98,21 @@ class CoffeeMachine:
                 user_interface.clear()
                 self.refill_machine()
 
-    def make_coffee(self):
-        condition1 = self.water >= coffee_selection.choice['water']
-        condition2 = self.milk >= coffee_selection.choice['milk']
-        condition3 = self.coffee_beans >= coffee_selection.choice['coffee']
+    def make_coffee(self, choice):
+        condition1 = self.water >= choice['water']
+        condition2 = self.milk >= choice['milk']
+        condition3 = self.coffee_beans >= choice['coffee']
         if (condition1 and condition2 and condition3):
-            self.water -= coffee_selection.choice['water']
-            self.coffee_beans -= coffee_selection.choice['coffee']
-            self.milk -= coffee_selection.choice['milk']
+            self.water -= choice['water']
+            self.coffee_beans -= choice['coffee']
+            self.milk -= choice['milk']
             user_interface.clear()
             print(f'''\n Preparing your {
-                  (Fore.YELLOW + coffee_selection.choice['name'] + '\033[39m')} - please wait ''')
+                  (Fore.YELLOW + choice['name'] + '\033[39m')} - please wait ''')
             time.sleep(2)
             user_interface.clear()
             print(f'''\n Your {
-                (Fore.YELLOW + coffee_selection.choice['name'] + '\033[39m')} is now ready.''')
+                (Fore.YELLOW + choice['name'] + '\033[39m')} is now ready.''')
             with open("coffee_icon.txt", "r") as file:
                 icon = file.read()
             print(icon)
@@ -121,5 +121,5 @@ class CoffeeMachine:
         else:
             user_interface.clear()
             print(f'''\n{Fore.RED}Sorry there are not enough supplies in the machine to make a {
-                  coffee_selection.choice['name']}. Please refill the machine.''')
+                  choice['name']}. Please refill the machine.''')
             time.sleep(3)
