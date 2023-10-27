@@ -96,6 +96,8 @@ The source code for this terminal application adhered to the PEP 8 style guideli
 
 PEP 8 was chosen to enhance the clarity and consistency of the application's code.
 
+Please note that the line length limit has been extended from 79 characters to 99 characters. As stated in the PEP 8 guidelines as long as all team members are in agreement the line length limit can be increased to 99 characters, however this excludes comments and docstrings which must still be limited to 72 characters. 
+
 The PEP 8 style code for python code can be found [here](https://peps.python.org/pep-0008/)
 
 ## Testing
@@ -202,3 +204,4 @@ def test_cleaning_cycle_Low(capsys):
 ## Refrences 
 
 [ascii banner](https://manytools.org/hacker-tools/ascii-banner/)
+[ascii icon](https://www.asciiart.eu/image-to-ascii)
