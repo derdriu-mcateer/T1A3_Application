@@ -13,10 +13,10 @@ def test_cleaning_cycle_High(capsys):
     if testMachineHigh.water > 50:
         full_capture = capture.out.split("\n")
         latest_capture = full_capture[-2]
-        # Pytest will read colorama text as ASNI sequences so (\x1b[32m is equal to FORE.GREEN)
+        # Pytest will read colorama text as ASNI sequences
         assert (
             latest_capture
-            == " \x1b[32mThe cleaning cycle is now complete. The machine is ready for use"
+            == "\x1b[32mThe cleaning cycle is complete. The machine is ready for use"
         )
         assert testMachineHigh.water == 150
     else:
@@ -42,13 +42,13 @@ def test_cleaning_cycle_Low(capsys):
         latest_capture = full_capture[-2]
         assert (
             latest_capture
-            == " \x1b[32mThe cleaning cycle is now complete. The machine is ready for use"
+            == " \x1b[32mThe cleaning cycle is complete. The machine is ready for use"
         )
     else:
         full_capture = capture.out.split("\n")
         latest_capture = full_capture[-2]
         assert (
             latest_capture
-            == " There is an insufficient amount of water available. Please refill the machine"
+            == "There is an insufficient amount of water available. Please refill the machine"
         )
         assert testMachineLow.water == 20

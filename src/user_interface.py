@@ -7,24 +7,25 @@ colorama.init(autoreset=True)
 
 
 def welcome_greeting():
-    clear()
+    print(f"\n {Fore.GREEN}TURNING ON \n")
+    time.sleep(1)
     with open("welcome_banner.txt", "r") as file:
         welcome = file.read()
     print(welcome)
-    print(f"\n {Fore.CYAN}Hello there!")
-    time.sleep(1)
+    time.sleep(2)
 
 
 def goodbye_message():
     with open("quit_banner.txt", "r") as file:
         goodbye = file.read()
     print(goodbye)
-    time.sleep(1)
+    time.sleep(2)
     print(f"\n {Fore.RED}TURNING OFF")
     time.sleep(1)
 
 
 def user_menu():
+    clear()
     print("\n Please select an option:")
     print(f'\n{(Fore.YELLOW + '[1]' + '\033[39m')} Make A Coffee')
     print(f'\n{(Fore.YELLOW + '[2]' + '\033[39m')} Refill the Machine ')

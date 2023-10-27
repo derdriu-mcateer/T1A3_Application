@@ -1,18 +1,19 @@
 import colorama
-from colorama import Fore
-colorama.init(autoreset=True)
 import user_interface
 import time
+from colorama import Fore
+
+colorama.init(autoreset=True)
 
 
 class CoffeeSelection:
     def __init__(self):
         self.coffee_types = {
-            1: {"name": "Latte", "water": 60, "coffee": 24, "milk": 90},
-            2: {"name": "Flat White", "water": 60, "coffee": 24, "milk": 180},
-            3: {"name": "Cappucino", "water": 60, "coffee": 24, "milk": 120},
-            4: {"name": "Long Black", "water": 180, "coffee": 24, "milk": 0},
-            5: {"name": "Espresso", "water": 60, "coffee": 20, "milk": 0},
+            "1": {"name": "Latte", "water": 60, "coffee": 24, "milk": 90},
+            "2": {"name": "Flat White", "water": 60, "coffee": 24, "milk": 180},
+            "3": {"name": "Cappuccino", "water": 60, "coffee": 24, "milk": 120},
+            "4": {"name": "Long Black", "water": 180, "coffee": 24, "milk": 0},
+            "5": {"name": "Espresso", "water": 60, "coffee": 20, "milk": 0},
         }
 
     def user_menu(self):
@@ -23,17 +24,14 @@ class CoffeeSelection:
             )
 
     def user_selection(self):
-
         global choice
         try:
-            selection = int(input("\n:"))
+            selection = input("\n:")
             choice = self.coffee_types[selection]
             return choice
-        except:
+        except KeyError:
+            print(f"\n{Fore.RED}Sorry [{selection}] is not a valid option")
+            time.sleep(2)
             user_interface.clear()
-            print(
-                f"\n{Fore.RED}Sorry that is not a valid option - please select a number from the list"
-            )
             self.user_menu()
             self.user_selection()
-

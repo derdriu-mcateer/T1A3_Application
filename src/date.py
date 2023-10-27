@@ -26,10 +26,7 @@ def date_today():
 
 
 def check_date():
-    try:
-        if past_date == str(datetime.now().date()):
-            CoffeeMachine().cleaning_cycle()  # will run a clean cycle
-    except (
-        NameError
-    ):  # if past_date is not defined then use current date as the past date
-        past_date = str(datetime.now().date())
+    if past_date != str(datetime.now().date()):
+        CoffeeMachine().cleaning_cycle()  # will run a clean cycle
+    else:
+        pass

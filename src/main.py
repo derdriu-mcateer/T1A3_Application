@@ -3,16 +3,18 @@ from date import date_today, check_date
 from coffee_selection import CoffeeSelection
 from coffee_machine import CoffeeMachine
 import user_interface
+import time
 
 
 def main():
+    user_interface.clear()
     user_interface.welcome_greeting()
     coffee_machine = CoffeeMachine()
+    user_interface.clear()
     check_date()
     while True:
-        user_interface.clear()
         user_interface.user_menu()
-        user_action = input("\n:") 
+        user_action = input("\n:")
         match user_action:
             case "5":
                 user_interface.clear()
@@ -34,14 +36,14 @@ def main():
                 coffee_machine.refill_machine()
             case "1":
                 user_interface.clear()
-                # run the coffee selection function then the make coffee function
+                # run the coffee selection function
                 CoffeeSelection().user_menu()
                 CoffeeSelection().user_selection()
+                # run the make coffee function
                 coffee_machine.make_coffee()
             case _:
-                print(
-                    f"\n{Fore.RED}Sorry [{user_action}] is not a valid option - please select a valid option"
-                )
+                print(f"\n{Fore.RED}Sorry [{user_action}] is not a valid option")
+                time.sleep(1)
 
 
 if __name__ == "__main__":
