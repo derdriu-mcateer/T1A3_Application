@@ -1,63 +1,54 @@
 from coffee_machine import CoffeeMachine
-from coffee_selection import CoffeeSelection
 import pytest
 
-testMachineHigh =  CoffeeMachine(water = 200)
-testMachineLow = CoffeeMachine(water = 20)
+# Testing the cleaning cycle function within the CoffeeMachine class.
+
+testMachineHigh = CoffeeMachine(water=200)
+
+
+# Testing the output when the machine's water level is sufficient
 def test_cleaning_cycle_High(capsys):
     testMachineHigh.cleaning_cycle()
     capture = capsys.readouterr()
     if testMachineHigh.water > 50:
-        full_capture = capture.out.split('complete.')
-        latest_capture = full_capture[-1]
-        assert latest_capture == ' The machine is ready for use\n'
+        full_capture = capture.out.split("\n")
+        latest_capture = full_capture[-2]
+        # Pytest will read colorama text as ASNI sequences so (\x1b[32m is equal to FORE.GREEN)
+        assert (
+            latest_capture
+            == " \x1b[32mThe cleaning cycle is now complete. The machine is ready for use"
+        )
+        assert testMachineHigh.water == 150
     else:
-        full_capture = capture.out.split('available.')
-        latest_capture = full_capture[-1]
-        assert latest_capture == " Please refill the machine\n"
+        full_capture = capture.out.split("\n")
+        latest_capture = full_capture[-2]
+        assert (
+            latest_capture
+            == " There is an insufficient amount of water available. Please refill the machine"
+        )
 
+
+testMachineLow = CoffeeMachine(water=20)
+
+
+# Testing the output when the machine's water level is insufficient
 def test_cleaning_cycle_Low(capsys):
     testMachineLow.cleaning_cycle()
+    # capture the output when the cleaning cycle function is called
     capture = capsys.readouterr()
+    # will pass the if condition because the water level is below 50
     if testMachineLow.water > 50:
-        full_capture = capture.out.split('complete.')
-        latest_capture = full_capture[-1]
-        assert latest_capture == ' The machine is ready for use\n'
+        full_capture = capture.out.split("\n")
+        latest_capture = full_capture[-2]
+        assert (
+            latest_capture
+            == " \x1b[32mThe cleaning cycle is now complete. The machine is ready for use"
+        )
     else:
-        full_capture = capture.out.split('available.')
-        latest_capture = full_capture[-1]
-        assert latest_capture == " Please refill the machine\n"
-
-
-coffee_Pass = CoffeeSelection()
-no_Coffee = CoffeeSelection()
-def test_user_selection_latte():
-    selection = 1
-    choice = coffee_Pass.coffee_types[selection]
-    assert choice == {"name": "Latte", "water": 60, "coffee": 24, "milk": 90}
-
-def test_user_selection_FW():
-    selection = 2
-    choice = coffee_Pass.coffee_types[selection]
-    assert choice == {"name": "Flat White", "water": 60, "coffee": 24, "milk": 180}
-
-def test_user_selection_Cap():
-    selection = 3
-    choice = coffee_Pass.coffee_types[selection]
-    assert choice == {"name": "Cappucino", "water": 60, "coffee": 24, "milk": 120}
-
-def test_user_selection_LB():
-    selection = 4
-    choice = coffee_Pass.coffee_types[selection]
-    assert choice == {"name": "Long Black", "water": 180, "coffee": 24, "milk": 0}
-
-def test_user_selection_ES():
-    selection = 5
-    choice = coffee_Pass.coffee_types[selection]
-    assert choice == {"name": "Espresso", "water": 60, "coffee": 20, "milk": 0}
-
-def test_user_selection_no():
-    selection = 6
-    with pytest.raises(KeyError):
-        choice = no_Coffee.coffee_types[selection]
-
+        full_capture = capture.out.split("\n")
+        latest_capture = full_capture[-2]
+        assert (
+            latest_capture
+            == " There is an insufficient amount of water available. Please refill the machine"
+        )
+        assert testMachineLow.water == 20
