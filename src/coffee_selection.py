@@ -28,7 +28,7 @@ class CoffeeSelection:
             selection = input("\n:")
             choice = self.coffee_types[selection]
             return choice
-        except KeyError:
+        except (KeyError, TypeError):
             print(f"\n{Fore.RED}Sorry [{selection}] is not a valid option")
             time.sleep(2)
             user_interface.clear()

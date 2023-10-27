@@ -92,8 +92,7 @@ class CoffeeMachine:
                 time.sleep(2)
             case _:
                 print(
-                    f"\n{Fore.RED}Sorry [{refill_selection}] is not a valid option\
-                - please select a valid option")
+                    f'\n{Fore.RED}Sorry [{refill_selection}] is not a valid option')
                 time.sleep(2)
                 user_interface.clear()
                 self.refill_machine()
@@ -113,7 +112,7 @@ class CoffeeMachine:
             user_interface.clear()
             print(f'''\n Your {
                 (Fore.YELLOW + choice['name'] + '\033[39m')} is now ready.''')
-            with open("coffee_icon.txt", "r") as file:
+            with open('coffee_icon.txt', 'r') as file:
                 icon = file.read()
             print(icon)
             time.sleep(2)
