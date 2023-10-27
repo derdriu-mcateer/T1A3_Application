@@ -59,6 +59,7 @@ git clone https://github.com/mini109/T1A3_Application.git
 
 ### Required Dependencies
 ### Walk Through
+Below is a quick walkthrough of the coffee machine simulation for the terminal view. 
 
 
 
@@ -83,12 +84,14 @@ I used a purple label to identify the FEATURES within the application. For each 
 ![features & checklists](./docs/trello%20screenshots/features.png)
 
 
-## Features 
-### 1. Make a coffee feature 
-### 2. Refill Feature 
-### 3. Report Feature
-### 4. Cleaning Cycle Feature 
-### 5. Turn off Feature 
+## Features
+### 1. Main Interface 
+### 1. Coffee Menu Feature
+### 2. Make a Coffee Feature
+### 3. Refill Feature 
+### 4. Report Feature
+### 5. Cleaning Cycle Feature 
+### 6. Turn off Feature 
 
 
 ## Styling
