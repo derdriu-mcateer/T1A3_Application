@@ -63,8 +63,33 @@ git clone https://github.com/mini109/T1A3_Application.git
 
 
 ## Implementation Plan
+Trello was used as the project management platform for this implementation plan. To view the trello board, please follow this [link](https://trello.com/invite/b/OaPuAP6S/ATTI2613cf6daa256cbdb98c4c141b9f8e119A3EC4AE/t1a3-terminal-app)
+
+I organised my Trello board into 5 categories. 
+- TO BE COMPLETED (tasks that have yet to be implemented)
+- IN PROGRESS (tasks that are in the process of being completed)
+- DONE  (tasks that have been completed successfully)
+- ON GOING (tasks that a required to be constantly considered)
+- IF TIME PERMITS (tasks that would be great to execute but not vital to the terminal application)
+
+I also used labels within the Trello board to identify which tasks related to which category.\
+![trello labels](./docs/trello%20screenshots/trello_labels.png)
+
+
+I found it quite hard to implement date deadlines to each tasks so I decided to implement a grade of diffuculty to each task as this gave me a better idea of how long I thought a task may take me. 
+
+I used a purple label to identify the FEATURES within the application. For each feature card I then created a checklist which provided an overview of the functions each feature should have. 
+
+![features & checklists](./docs/trello%20screenshots/features.png)
+
 
 ## Features 
+### 1. Make a coffee feature 
+### 2. Refill Feature 
+### 3. Report Feature
+### 4. Cleaning Cycle Feature 
+### 5. Turn off Feature 
+
 
 ## Styling
 The source code for this terminal application adhered to the PEP 8 style guidelines. 
