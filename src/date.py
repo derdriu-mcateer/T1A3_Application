@@ -14,7 +14,6 @@ def accessed_date():
 
 
 
-
 # Will save current date into txt file once the app is quit
 def date_today():
     with open("date_last_accessed.txt", "w") as f:
