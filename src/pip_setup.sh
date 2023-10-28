@@ -1,3 +1,4 @@
+#!/bin/bash
 # Check that pip3 is installed
 if ! [[ -x "$(command -v pip3)" ]]
 then
