@@ -13,7 +13,6 @@ def accessed_date():
         print(f"An error has occurred: {str(error)}")
 
 
-
 # Will save current date into txt file once the app is quit
 def date_today():
     with open("date_last_accessed.txt", "w") as f:
@@ -27,5 +26,3 @@ def check_date(past_date):
         CoffeeMachine().cleaning_cycle()  # will run a clean cycle
     else:
         pass
-
-

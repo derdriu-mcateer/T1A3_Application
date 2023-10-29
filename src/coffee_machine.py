@@ -5,6 +5,7 @@ import colorama
 from colorama import Fore
 colorama.init(autoreset=True)
 
+
 # stops colour from continuing
 colour_close = "\033[39m"
 
