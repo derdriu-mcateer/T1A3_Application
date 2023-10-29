@@ -21,6 +21,7 @@ def date_today():
     return current_date
 
 
+# Check if current date and past date are the same
 def check_date(past_date):
     if past_date != str(datetime.now().date()):
         CoffeeMachine().cleaning_cycle()  # will run a clean cycle

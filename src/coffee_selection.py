@@ -1,14 +1,11 @@
 import colorama
-import user_interface
+import user_interface as ui
 import time
 from colorama import Fore
 colorama.init(autoreset=True)
 
 
-# stops colour from continuing
-colour_close = "\033[39m"
-
-
+# Represents the menu of coffees
 class CoffeeSelection:
     def __init__(self):
         self.coffee_types = {
@@ -19,14 +16,17 @@ class CoffeeSelection:
             "5": {"name": "Espresso", "water": 60, "coffee": 20, "milk": 0},
         }
 
+    # display the menu
     def user_menu(self):
         print("\n Please select which type of coffee you would like to make: ")
         for key, value in self.coffee_types.items():
             print(
-                f'''\n{Fore.YELLOW + "[" + str(key) + "]" + colour_close} {value["name"]}'''
+                f'''\n{Fore.YELLOW + "[" + str(key) + "]" + ui.colour_close} {value["name"]}'''
             )
 
+    # access the input
     def user_selection(self):
+        # continue until a valid input is given
         while True:
             try:
                 selection = input("\n:")
@@ -35,6 +35,6 @@ class CoffeeSelection:
             except (KeyError):
                 print(f"\n{Fore.RED}Sorry [{selection}] is not a valid option")
                 time.sleep(2)
-                user_interface.clear()
+                ui.clear()
                 self.user_menu()
                 continue

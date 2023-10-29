@@ -1,13 +1,8 @@
 import time
-import user_interface
-import coffee_selection
+import user_interface as ui
 import colorama
 from colorama import Fore
 colorama.init(autoreset=True)
-
-
-# stops colour from continuing
-colour_close = "\033[39m"
 
 
 # Represents the coffee machine
@@ -18,42 +13,43 @@ class CoffeeMachine:
         self.coffee_beans = coffee_beans
         self.milk = milk
 
+    # print a report of the machine"s supplies and each level
     def supplies_report(self):
-        user_interface.clear()
-        # print a report of the machine"s supplies and each level
+        ui.clear()
         print(f'''\n The machine\"s supply levels are: ''')
+        # colour code severity of supply levels
         if self.water < 100:
-            print( 
-                f'''\n {(Fore.RED + "Water: " + colour_close)}{self.water}ml / 500ml'''
+            print(
+                f'''\n {(Fore.RED + "Water: " + ui.colour_close)}{self.water}ml / 500ml'''
             )
         elif self.water <= 250:
             print(
-                f'''\n {(Fore.YELLOW + "Water: " + colour_close)}{self.water}ml / 500ml'''
+                f'''\n {(Fore.YELLOW + "Water: " + ui.colour_close)}{self.water}ml / 500ml'''
             )
         else:
             print(
-                f'''\n {(Fore.GREEN + "Water: " + colour_close)}{self.water}ml / 500ml'''
+                f'''\n {(Fore.GREEN + "Water: " + ui.colour_close)}{self.water}ml / 500ml'''
             )
 
         if self.coffee_beans < 50:
             print(
-                f'''\n {(Fore.RED + "Coffee: " + colour_close)}{self.coffee_beans}g / 250g''')
+                f'''\n {(Fore.RED + "Coffee: " + ui.colour_close)}{self.coffee_beans}g / 250g''')
         elif self.coffee_beans <= 120:
             print(f'''\n {(Fore.YELLOW + "Coffee: " +
-                  colour_close)}{self.coffee_beans}g / 250g''')
+                  ui.colour_close)}{self.coffee_beans}g / 250g''')
         else:
             print(f'''\n {(Fore.GREEN + "Coffee: " +
-                  colour_close)}{self.coffee_beans}g / 250g''')
+                  ui.colour_close)}{self.coffee_beans}g / 250g''')
 
         if self.milk < 100:
             print(
-                f'''\n {(Fore.RED + "Milk: " + colour_close)} {self.milk}ml / 400ml''')
+                f'''\n {(Fore.RED + "Milk: " + ui.colour_close)} {self.milk}ml / 400ml''')
         elif self.milk <= 200:
             print(f'''\n {(Fore.YELLOW + "Milk: " +
-                  colour_close)} {self.milk}ml / 400ml''')
+                  ui.colour_close)} {self.milk}ml / 400ml''')
         else:
             print(
-                f'''\n {(Fore.GREEN + "Milk: " + colour_close)} {self.milk}ml / 400ml''')
+                f'''\n {(Fore.GREEN + "Milk: " + ui.colour_close)} {self.milk}ml / 400ml''')
         print(input("\n Press any key to continue: "))
 
     def cleaning_cycle(self):
@@ -73,11 +69,11 @@ class CoffeeMachine:
 
     def refill_machine(self):
         print("\n Which supply would you like to refill:")
-        print(f'''\n{(Fore.YELLOW + "[1]" + colour_close)} Water''')
-        print(f'''\n{(Fore.YELLOW + "[2]" + colour_close)} Coffee Beans ''')
-        print(f'''\n{(Fore.YELLOW + "[3]" + colour_close)} Milk ''')
-        print(f'''\n{(Fore.YELLOW + "[4]" + colour_close)} All''')
-        print(f'''\n{(Fore.YELLOW + "[5]" + colour_close)} None''')
+        print(f'''\n{(Fore.YELLOW + "[1]" + ui.colour_close)} Water''')
+        print(f'''\n{(Fore.YELLOW + "[2]" + ui.colour_close)} Coffee Beans ''')
+        print(f'''\n{(Fore.YELLOW + "[3]" + ui.colour_close)} Milk ''')
+        print(f'''\n{(Fore.YELLOW + "[4]" + ui.colour_close)} All''')
+        print(f'''\n{(Fore.YELLOW + "[5]" + ui.colour_close)} None''')
 
         refill_selection = input("\n:")
         match refill_selection:
@@ -102,7 +98,7 @@ class CoffeeMachine:
                 print(
                     f'''\n{Fore.RED}Sorry [{refill_selection}] is not a valid option''')
                 time.sleep(2)
-                user_interface.clear()
+                ui.clear()
                 self.refill_machine()
 
     def make_coffee(self, choice):
@@ -113,20 +109,20 @@ class CoffeeMachine:
             self.water -= choice["water"]
             self.coffee_beans -= choice["coffee"]
             self.milk -= choice["milk"]
-            user_interface.clear()
+            ui.clear()
             print(f'''\n Preparing your {
-                  (Fore.YELLOW + choice["name"] + colour_close)} - please wait ''')
+                  (Fore.YELLOW + choice["name"] + ui.colour_close)} - please wait ''')
             time.sleep(2)
-            user_interface.clear()
+            ui.clear()
             print(f'''\n Your {
-                (Fore.YELLOW + choice["name"] + colour_close)} is now ready.''')
+                (Fore.YELLOW + choice["name"] + ui.colour_close)} is now ready.''')
             with open("coffee_icon.txt", "r") as file:
                 icon = file.read()
             print(icon)
             time.sleep(2)
-            user_interface.clear()
+            ui.clear()
         else:
-            user_interface.clear()
+            ui.clear()
             print(f'''\n{Fore.RED}Sorry there are not enough supplies in the machine to make a {
                   choice["name"]}. Please refill the machine.''')
             time.sleep(3)
