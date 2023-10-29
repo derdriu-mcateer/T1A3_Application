@@ -19,7 +19,7 @@ The link for the Terminal Application GitHub repository can be found [here](http
 
 ### Software Requirements
 #### Python 3
-This application requires a Python version of 3 or higher. 
+This application requires a Python 3 to run. 
 
 You can check if you have python installed by entering `python --version` into your terminal. 
 
