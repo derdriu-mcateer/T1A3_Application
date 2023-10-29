@@ -2,12 +2,14 @@ import time
 import os
 import colorama
 from colorama import Fore
-
 colorama.init(autoreset=True)
 
 
+colour_close = "\033[39m"
+
+
 def welcome_greeting():
-    print(f"\n {Fore.GREEN}TURNING ON \n")
+    print(f'''\n {Fore.GREEN}TURNING ON \n''')
     time.sleep(1)
     with open("welcome_banner.txt", "r") as file:
         welcome = file.read()
@@ -27,11 +29,11 @@ def goodbye_message():
 def user_menu():
     clear()
     print("\n Please select an option:")
-    print(f'\n{(Fore.YELLOW + '[1]' + '\033[39m')} Make A Coffee')
-    print(f'\n{(Fore.YELLOW + '[2]' + '\033[39m')} Refill the Machine ')
-    print(f'\n{(Fore.YELLOW + '[3]' + '\033[39m')} View Supply Levels ')
-    print(f'\n{(Fore.YELLOW + '[4]' + '\033[39m')} Clean the Machine ')
-    print(f'\n{(Fore.YELLOW + '[5]' + '\033[39m')} Turn Off')
+    print(f'''\n{(Fore.YELLOW + '[1]' + colour_close)} Make A Coffee''')
+    print(f'''\n{(Fore.YELLOW + '[2]' + colour_close)} Refill the Machine ''')
+    print(f'''\n{(Fore.YELLOW + '[3]' + colour_close)} View Supply Levels ''')
+    print(f'''\n{(Fore.YELLOW + '[4]' + colour_close)} Clean the Machine ''')
+    print(f'''\n{(Fore.YELLOW + '[5]' + colour_close)} Turn Off''')
 
 
 def clear():
