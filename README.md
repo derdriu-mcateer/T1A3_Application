@@ -33,6 +33,25 @@ However if you wish to download or upgrade pip onto your system now please visit
 #### Note for Window Users 
 The applicatiopn is not supported by the standard windows terminal and requires an alternative such as the git bash terminal or a Windows Subsystem for Linux(WSL) in order to achieve functionality.
 
+### Command Line Arguments 
+The terminal will prompt the user for input in various functions. 
+
+There will be menus displayed such as the one below which asks the user to selection an option:
+
+![coffee menu feature](./docs/feature%20screenshots/Coffee%20Menu.png)
+
+Only numerical inputs between 1 and 5 are considered valid inputs in these cases. 
+```md 
+1       2       3       4       5 
+``` 
+No other input will be accepted - any other input will display an error message and prompt the user to try again. 
+
+There is also cases where the terminal will print `" Press any key to continue: "` here the user can provide any keyboard input and the application will proceed. 
+
+![supply report feature](./docs/feature%20screenshots/Supplies%20Report.png)
+
+
+
 
 
 ### Installation
@@ -127,7 +146,8 @@ I organised my Trello board into 5 categories.
 - ON GOING (tasks that a required to be constantly considered)
 - IF TIME PERMITS (tasks that would be great to execute but not vital to the terminal application)
 
-I also used labels within the Trello board to identify which tasks related to which category.\
+I also used labels within the Trello board to identify which tasks related to which category.
+
 ![trello labels](./docs/trello%20screenshots/trello_labels.png)
 
 
@@ -137,6 +157,11 @@ I used a purple label to identify the FEATURES within the application. For each 
 
 ![features & checklists](./docs/trello%20screenshots/features.png)
 
+Below are A FEW progress screenshots during the development of the terminal application. The history of the board can be viewed within the trello website. 
+
+![progress 1](./docs/trello%20screenshots/progress_1.png)
+![progress 2](./docs/trello%20screenshots/progress_2.png)
+![progress 3](./docs/trello%20screenshots/progress_3.png)
 
 ## Features
 ### 1. Main Interface 
@@ -147,6 +172,35 @@ The main user interface is the feature the user will initially interact with upo
 The user is presented with 5 options to select from. A match case statement is used to assess the user's input. Upon a successful match various functions are called to display the other features of the application. 
 
 In the case that the user's input does not satisfy the match case statement then a red error message is displayed prompting the user to enter a valid input. 
+
+Note that the match case statement is nested within a while loop. This while loop is only broken when the user enters '5' which quits the program eseentually simulating the turning off of a coffee machine. 
+```python
+    while True:
+        user_interface.user_menu()
+        user_action = input("\n:")
+        match user_action:
+            case "5":
+                user_interface.clear()
+                date_today()
+                user_interface.goodbye_message()
+                break
+            case "4":
+                user_interface.clear()
+                coffee_machine.cleaning_cycle()
+            case "3":
+                coffee_machine.supplies_report()
+            case "2":
+                user_interface.clear()
+                coffee_machine.refill_machine()
+            case "1":
+                user_interface.clear()
+                CoffeeSelection().user_menu()
+                choice = CoffeeSelection().user_selection()
+                coffee_machine.make_coffee(choice)
+            case _:
+                print(f'''\n{Fore.RED}Sorry [{user_action}] is not a valid option''')
+                time.sleep(1)
+```
 
 ### 2. Coffee Menu Feature
 Another main feature of the application is the menu feature which displays the types of coffee's the machine can output. There are 5 options that the user can select. 
@@ -159,11 +213,11 @@ The different coffee types are stored within a nested dictionary which contains 
 class CoffeeSelection:
     def __init__(self):
         self.coffee_types = {
-            '1': {'name': 'Latte', 'water': 60, 'coffee': 24, 'milk': 90},
-            '2': {'name': 'Flat White', 'water': 60, 'coffee': 24, 'milk': 180},
-            '3': {'name': 'Cappuccino', 'water': 60, 'coffee': 24, 'milk': 120},
-            '4': {'name': 'Long Black', 'water': 180, 'coffee': 24, 'milk': 0},
-            '5': {'name': 'Espresso', 'water': 60, 'coffee': 20, 'milk': 0},
+            "1": {"name": "Latte", "water": 60, "coffee": 24, "milk": 90},
+            "2": {"name": "Flat White", "water": 60, "coffee": 24, "milk": 180},
+            "3": {"name": "Cappuccino", "water": 60, "coffee": 24, "milk": 120},
+            "4": {"name": "Long Black", "water": 180, "coffee": 24, "milk": 0},
+            "5": {"name": "Espresso", "water": 60, "coffee": 20, "milk": 0},
         }
 ```
 
@@ -171,10 +225,10 @@ The menu is displayed to the user by using a for loop which iterates over the ke
 
 ```python
     def user_menu(self):
-        print('\n Please select which type of coffee you would like to make: ')
+        print("\n Please select which type of coffee you would like to make: ")
         for key, value in self.coffee_types.items():
             print(
-                f'''\n{Fore.YELLOW + '[' + str(key) + ']' '\033[39m'} {value['name']}'''
+                f'''\n{Fore.YELLOW + "[" + str(key) + "]" + colour_close} {value["name"]}'''
             )
 ```
 
@@ -208,21 +262,21 @@ In the case that the any of IF conditions are not satisfied then a red error mes
 
 ```python
     def make_coffee(self, choice):
-        condition1 = self.water >= choice['water']
-        condition2 = self.milk >= choice['milk']
-        condition3 = self.coffee_beans >= choice['coffee']
+        condition1 = self.water >= choice["water"]
+        condition2 = self.milk >= choice["milk"]
+        condition3 = self.coffee_beans >= choice["coffee"]
         if (condition1 and condition2 and condition3):
-            self.water -= choice['water']
-            self.coffee_beans -= choice['coffee']
-            self.milk -= choice['milk']
+            self.water -= choice["water"]
+            self.coffee_beans -= choice["coffee"]
+            self.milk -= choice["milk"]
             user_interface.clear()
             print(f'''\n Preparing your {
-                  (Fore.YELLOW + choice['name'] + '\033[39m')} - please wait ''')
+                  (Fore.YELLOW + choice["name"] + colour_close)} - please wait ''')
             time.sleep(2)
             user_interface.clear()
             print(f'''\n Your {
-                (Fore.YELLOW + choice['name'] + '\033[39m')} is now ready.''')
-            with open('coffee_icon.txt', 'r') as file:
+                (Fore.YELLOW + choice["name"] + colour_close)} is now ready.''')
+            with open("coffee_icon.txt", "r") as file:
                 icon = file.read()
             print(icon)
             time.sleep(2)
@@ -230,7 +284,7 @@ In the case that the any of IF conditions are not satisfied then a red error mes
         else:
             user_interface.clear()
             print(f'''\n{Fore.RED}Sorry there are not enough supplies in the machine to make a {
-                  choice['name']}. Please refill the machine.''')
+                  choice["name"]}. Please refill the machine.''')
             time.sleep(3)
 ```
 ### 4. Cleaning Cycle Feature 
@@ -392,5 +446,10 @@ def test_cleaning_cycle_Low(capsys):
 ## Refrences 
 March, J. (2023). Enthought Python Minimum Hardware Requirements. [online] Enthought Knowledge Base. Available at: https://support.enthought.com/hc/en-us/articles/204273874-Enthought-Python-Minimum-Hardware-Requirements. 
 
-[ascii banner](https://manytools.org/hacker-tools/ascii-banner/)
-[ascii icon](https://www.asciiart.eu/image-to-ascii)
+“Create ASCII Text Banners Online.” Manytools.org - Your Online Toolshed, manytools.org/hacker-tools/ascii-banner/. [ascii banner](https://manytools.org/hacker-tools/ascii-banner/)
+
+“Image to ASCII: Free ASCII Art Converter.” Image to ASCII: Free ASCII Art Converter, www.asciiart.eu/image-to-ascii. [ascii icon](https://www.asciiart.eu/image-to-ascii)
+
+van Rossum, Guido, et al. “PEP 8 – Style Guide for Python Code | Peps.python.org.” Peps.python.org, 5 July 2001, https://peps.python.org/pep-0008/ 
+
+“Bash Reference Manual.",  https://www.gnu.org/software/bash/manual/bash.html
