@@ -1,9 +1,5 @@
 # T1A3 - Terminal Application
 
-# Table of Contents
-1. [GitHub Repository](#githublink) 
-2. [References](#refrences)
-
 ## GitHub Repository <a name='githublink'></a>
 The link for the Terminal Application GitHub repository can be found [here](https://github.com/mini109/T1A3_Application/tree/main)
 
@@ -449,7 +445,7 @@ def test_cleaning_cycle_Low(capsys):
 ![Pytest Results from CoffeeMachine test](./docs/testing%20screenshots/test_coffee_machine.png)
 
 
-## Refrences <a id="references"></a>
+ ## Refrences
 March, J. (2023). Enthought Python Minimum Hardware Requirements. [online] Enthought Knowledge Base. Available at: https://support.enthought.com/hc/en-us/articles/204273874-Enthought-Python-Minimum-Hardware-Requirements. 
 
 “Create ASCII Text Banners Online.” Manytools.org - Your Online Toolshed, manytools.org/hacker-tools/ascii-banner/. [ascii banner](https://manytools.org/hacker-tools/ascii-banner/)
